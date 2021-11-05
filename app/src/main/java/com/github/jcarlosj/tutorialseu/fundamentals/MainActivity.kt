@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         /** Obtiene referencia de los componentes del Activity */
         val btnAdd = findViewById<Button>( R .id .buttonAdd )
         val btnSubtract = findViewById<Button>( R .id .buttonSubtract )
+        val btnReset = findViewById<Button>( R .id .buttonReset )
         val tvCounter = findViewById<TextView>( R .id .tvCounter )
 
         /** Establece un evento sobre el componente de boton */
@@ -24,11 +25,19 @@ class MainActivity : AppCompatActivity() {
             Log.d( "Add", counter .toString() )     //  Despliega el resultado en la terminal
             tvCounter .text = counter .toString()       //  Despliega el resultado dentro del componente de TextView
         }
+
         /** Establece un evento sobre el componente de boton */
         btnSubtract .setOnClickListener {
             counter -= 1                                    //  Decrementa el valor
             Log.d( "Subtract", counter .toString() )    //  Despliega el resultado en la terminal
             tvCounter .text = counter .toString()           //  Despliega el resultado dentro del componente de TextView
+        }
+
+        /** Establece un evento sobre el componente de boton */
+        btnReset .setOnClickListener {
+            counter = 0                                    //  Asigna cero al valor
+            Log.d( "Reset", counter .toString() )      //  Despliega el resultado en la terminal
+            tvCounter .text = counter .toString()          //  Despliega el resultado dentro del componente de TextView
         }
     }
 }
