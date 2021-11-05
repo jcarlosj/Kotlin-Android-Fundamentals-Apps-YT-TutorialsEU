@@ -25,24 +25,25 @@ class MainActivity : AppCompatActivity() {
         /** Establece un evento sobre el componente de boton */
         btnAdd .setOnClickListener {
             this .counter += 1                                //  Incrementa el valor
-            showData( tvCounter )
+            showData( tvCounter, "Incrementa" )
         }
 
         /** Establece un evento sobre el componente de boton */
         btnSubtract .setOnClickListener {
             this .counter = if( this .counter <= 0 ) 0 else this .counter - 1           //  Decrementa el valor, solo si no es menor que CERO
-            showData( tvCounter )
+            showData( tvCounter, "Decrementa si > 0" )
         }
 
         /** Establece un evento sobre el componente de boton */
         btnReset .setOnClickListener {
             this .counter = 0                                    //  Asigna cero al valor
-            showData( tvCounter )
+            showData( tvCounter, "Inicializa" )
         }
     }
 
-    private fun showData( tvCounter: TextView ) {
+    private fun showData( tvCounter: TextView, message: String ) {
         Log.d( this .tag, this .counter .toString() )      //  Despliega el resultado en la terminal
-        tvCounter .text = this .counter .toString()          //  Despliega el resultado dentro del componente de TextView
+        tvCounter .text = this .counter .toString()        //  Despliega el resultado dentro del componente de TextView
+        Toast.makeText( this, message, Toast .LENGTH_LONG ) .show()
     }
 }
