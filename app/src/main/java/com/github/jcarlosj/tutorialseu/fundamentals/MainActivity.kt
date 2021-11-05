@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
+    private var counter = 0
+    private var tag = "none"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        var counter = 0
 
         /** Obtiene referencia de los componentes del Activity */
         val btnAdd = findViewById<Button>( R .id .buttonAdd )
@@ -21,23 +24,25 @@ class MainActivity : AppCompatActivity() {
 
         /** Establece un evento sobre el componente de boton */
         btnAdd .setOnClickListener {
-            counter += 1                                //  Incrementa el valor
-            Log.d( "Add", counter .toString() )     //  Despliega el resultado en la terminal
-            tvCounter .text = counter .toString()       //  Despliega el resultado dentro del componente de TextView
+            this .counter += 1                                //  Incrementa el valor
+            showData( tvCounter )
         }
 
         /** Establece un evento sobre el componente de boton */
         btnSubtract .setOnClickListener {
-            counter -= 1                                    //  Decrementa el valor
-            Log.d( "Subtract", counter .toString() )    //  Despliega el resultado en la terminal
-            tvCounter .text = counter .toString()           //  Despliega el resultado dentro del componente de TextView
+            this .counter = if( this .counter <= 0 ) 0 else this .counter - 1           //  Decrementa el valor, solo si no es menor que CERO
+            showData( tvCounter )
         }
 
         /** Establece un evento sobre el componente de boton */
         btnReset .setOnClickListener {
-            counter = 0                                    //  Asigna cero al valor
-            Log.d( "Reset", counter .toString() )      //  Despliega el resultado en la terminal
-            tvCounter .text = counter .toString()          //  Despliega el resultado dentro del componente de TextView
+            this .counter = 0                                    //  Asigna cero al valor
+            showData( tvCounter )
         }
+    }
+
+    private fun showData( tvCounter: TextView ) {
+        Log.d( this .tag, this .counter .toString() )      //  Despliega el resultado en la terminal
+        tvCounter .text = this .counter .toString()          //  Despliega el resultado dentro del componente de TextView
     }
 }
