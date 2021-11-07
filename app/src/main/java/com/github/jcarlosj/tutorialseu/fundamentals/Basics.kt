@@ -1,16 +1,19 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    // Comparison operators (==, !=, <, >, <=, >=)
-    var isEqual = 9 == 9
-    println( "9 == 9 : $isEqual" )
+    // Assignment operators (+=, -=, *=, /=, %=)
+    var result = 0
 
-    // String Interpolations
-    println( "9 != 9 : ${ 9 != 9 }" )
-    println( "9 > 9 : ${ 9 > 9 }" )
-    println( "9 < 9 : ${ 9 < 9 }" )
+    println( "Increment (++) / Decrement (--)" )
+    println( "result: $result" )
 
-    isEqual = "Juan" == "Juan"
-    println( "\"Juan\" == \"juan\" : $isEqual" )
-    
+    // Increment
+    println( "  result++: ${ result++ }" )
+    println( "  ++result: ${ ++result }" )
+
+    println( "result: $result" )
+
+    // Decrement
+    println( "  result--: ${ result-- }" )
+    println( "  --result: ${ --result }" )
 }
