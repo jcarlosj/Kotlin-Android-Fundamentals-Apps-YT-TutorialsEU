@@ -9,11 +9,14 @@ fun main() {
     print( "Me: " )
     val age = readLine()!! .toInt()
 
-    println( "Android say: Vaya! $age años es una buena edad para aprender" )
-    println( "Android say: Puedo preguntarte ¿Cuánto mides?: ")
-    print( "Me: " )
-    val size = readLine()!! .toFloat()
+    if( age > 17 ) {
+        println( "Android say: Puedo preguntarte ¿Cuánto mides?: ")
+        print( "Me: " )
+        val size = readLine()!! .toFloat()
 
-    println( "Android say: Ok, Juan. Mides $size y tienes $age años, Excelente!")
+        println( "Android say: Ok, Juan. Mides $size y tienes $age años, Excelente!")
+    }
+
+    println( "Android say: Vaya! $age años es una buena edad para aprender" )
 
 }
