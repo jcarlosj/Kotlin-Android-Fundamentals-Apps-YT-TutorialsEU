@@ -1,19 +1,19 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    // Assignment operators (+=, -=, *=, /=, %=)
-    var result = 0
+    println( "Android say: ¿Cómo te llamas?: " )
+    print( "Me: " )
+    val name = readLine()
 
-    println( "Increment (++) / Decrement (--)" )
-    println( "result: $result" )
+    println( "Android say: Hola $name, ¿Cuál es tu edad?: " )
+    print( "Me: " )
+    val age = readLine()!! .toInt()
 
-    // Increment
-    println( "  result++: ${ result++ }" )
-    println( "  ++result: ${ ++result }" )
+    println( "Android say: Vaya! $age años es una buena edad para aprender" )
+    println( "Android say: Puedo preguntarte ¿Cuánto mides?: ")
+    print( "Me: " )
+    val size = readLine()!! .toFloat()
 
-    println( "result: $result" )
+    println( "Android say: Ok, Juan. Mides $size y tienes $age años, Excelente!")
 
-    // Decrement
-    println( "  result--: ${ result-- }" )
-    println( "  --result: ${ --result }" )
 }
