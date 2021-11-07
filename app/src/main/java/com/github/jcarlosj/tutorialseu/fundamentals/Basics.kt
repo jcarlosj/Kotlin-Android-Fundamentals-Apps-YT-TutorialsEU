@@ -10,8 +10,10 @@ fun main() {
     val age = readLine()!! .toInt()
 
     // Condicional como expresion
-    var message = if( age < 17 ) "Android say: Vamos, Quiero invitarte a un helado! "
-                  else "Android say: Vamos, Quiero invitarte a una cerveza! "
+    var message = if( age <= 0 ) "Hey! Nadie tiene $age años"
+                  else if( age < 5 ) "Wow! Eres tan solo un pequeño"
+                  else if( age < 17 ) "Vamos a comer un helado"
+                  else "Vamos, ya tienes edad para una cerveza"
 
-    print( message )
+    print( "Android say: $message!" )
 }
