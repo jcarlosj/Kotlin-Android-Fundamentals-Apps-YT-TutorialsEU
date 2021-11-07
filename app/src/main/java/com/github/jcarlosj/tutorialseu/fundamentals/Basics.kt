@@ -10,11 +10,14 @@ fun main() {
     val age = readLine()!! .toInt()
 
     // When (Es como switch para otros lenguajes)
-    when {
-        age <= 0 -> println( "Hey! Nadie tiene $age años" )
-        age < 5  -> println( "Wow! Eres tan solo un pequeño" )
-        age < 17 -> println( "Vamos a comer un helado" )
-        else     -> println( "Vamos, ya tienes edad para una cerveza" )
+    when( age ) {
+        1, 2, 3, 4, 5 ->                            // Pasamos cada uno de los valore validos
+            println( "Wow! Eres tan solo un pequeño" )
+        in 6 .. 17 ->                               // Pasamos un rango
+            println( "Vamos a comer un helado" )
+        in 18 .. 100 ->                             // Pasamos un rango
+            println( "Vamos, ya tienes edad para una cerveza" )
+        else    -> println( "Hey! Nadie tiene $age años" )
 
     }
 }
