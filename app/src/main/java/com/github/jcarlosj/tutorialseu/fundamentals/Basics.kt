@@ -9,11 +9,9 @@ fun main() {
     print( "Me: " )
     val age = readLine()!! .toInt()
 
-    if( age < 17 ) {
-        println( "Android say: Vamos, Quiero invitarte a un helado! ")
-    }
-    else {
-        println( "Android say: Vamos, Quiero invitarte a una cerveza! ")
-    }
+    // Condicional como expresion
+    var message = if( age < 17 ) "Android say: Vamos, Quiero invitarte a un helado! "
+                  else "Android say: Vamos, Quiero invitarte a una cerveza! "
 
+    print( message )
 }
