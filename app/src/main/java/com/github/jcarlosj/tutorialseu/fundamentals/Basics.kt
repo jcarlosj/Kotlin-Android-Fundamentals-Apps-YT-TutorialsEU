@@ -1,30 +1,16 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    // Aritmetic operators (+, -, *, /, %)
-    val seis = 6
-    val tres = 3
+    // Comparison operators (==, !=, <, >, <=, >=)
+    var isEqual = 9 == 9
+    println( "9 == 9 : $isEqual" )
 
-    /** Suma */
-    var result = seis + tres                    //  Infiere el tipo Int
+    // String Interpolations
+    println( "9 != 9 : ${ 9 != 9 }" )
+    println( "9 > 9 : ${ 9 > 9 }" )
+    println( "9 < 9 : ${ 9 < 9 }" )
 
-    println( "Operaciones Aritmeticas" )
-    println( " - $seis + $tres = $result" )
-
-    /** División */
-    result /= 2                                 //  Solo Asigna la parte Entera del resultado
-    println( " - $seis + $tres / 2 = $result" )
-
-    /** Resta */
-    result -= 1
-    println( " - ( $seis + $tres / 2 ) - 1 = $result ")
-
-    /** Multiplicación */
-    result *= 3
-    println( " - (( $seis + $tres / 2 ) - 1 ) * 3 = $result")
-
-    /** Módulo */
-    var residuo = result % 2
-    println( " - residuo: $residuo" )
-
+    isEqual = "Juan" == "Juan"
+    println( "\"Juan\" == \"juan\" : $isEqual" )
+    
 }
