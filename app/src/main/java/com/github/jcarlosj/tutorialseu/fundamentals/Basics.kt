@@ -1,23 +1,20 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    println( "Android say: ¿Cómo te llamas?: " )
+    println( "Android say: Dame un nombre con S, por favor " )
     print( "Me: " )
-    val name = readLine()
-
-    println( "Android say: Hola $name, ¿Cuál es tu edad?: " )
-    print( "Me: " )
-    val age = readLine()!! .toInt()
+    var name = readLine()
+    name = name?.lowercase()
 
     // When (Es como switch para otros lenguajes)
-    when( age ) {
-        1, 2, 3, 4, 5 ->                            // Pasamos cada uno de los valore validos
-            println( "Wow! Eres tan solo un pequeño" )
-        in 6 .. 17 ->                               // Pasamos un rango
-            println( "Vamos a comer un helado" )
-        in 18 .. 100 ->                             // Pasamos un rango
-            println( "Vamos, ya tienes edad para una cerveza" )
-        else    -> println( "Hey! Nadie tiene $age años" )
+    when( name ) {
+        "sofia" ->                            // Pasamos cada uno de los valore validos
+            println( "${ name } es un nombre muy bonito" )
+        "sandra", "sonia", "susana" ->                               // Pasamos un rango
+            println( "${ name } es el nombre de una chica" )
+        "sandro", "sebastian", "sergio" ->                             // Pasamos un rango
+            println( "${ name } es el nombre de un chico" )
+        else    -> println( "Hey! $name es un nombre que no conozco" )
 
     }
 }
