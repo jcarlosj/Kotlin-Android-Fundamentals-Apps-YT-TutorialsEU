@@ -1,22 +1,38 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    print( "Iterar de 1 a 20, solo imprimir hasta el 9 \n  usando break \n    " )
-    for ( number in 1..20 ) {
-        if( number / 2 == 5 ) {
-            break
+    var counter: Int = 0
+    var total: Float = 0.0f
+    var value: Float
+
+    header()
+
+    do{
+        print( "Ingrese nota #${ counter + 1 }: " )
+        value = readLine()!! .toFloat()
+
+        if( value > 0 && value <= 5 ) {
+            total += value
+            counter ++
         }
-        print( "$number, " )
+        else if( value > 5 ) {
+            println( "  > ERROR: La nota no esta en el rango esperado" )
+        }
+    } while( value >= 0 )
+
+    println( "El promedio de las $counter notas ingresadas es: ${ getAverage( total, counter ) }" )
+}
+
+// Funcion sin parametros
+fun header() {
+    println( "Promedio de N notas, entre 0 a 5. Digite un numero menor de 0 para salir" )
+    repeat( 50 ){
+        print( "=" )
     }
     println()
+}
 
-    print( "Iterar de 1 a 20, sin imprimir los pares \n  usando continue \n    " )
-    for ( number in 1..20 ) {
-        if( number % 2 == 0 ) {
-            continue
-        }
-        print( "$number, " )
-    }
-    println()
-
+// Funcion con parametros
+fun getAverage( total: Float, counter: Int ) : Float {
+    return ( ( total / counter ) .toFloat() )
 }
