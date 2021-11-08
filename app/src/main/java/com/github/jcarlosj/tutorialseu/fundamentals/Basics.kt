@@ -1,38 +1,23 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    var counter: Int = 0
-    var total: Float = 0.0f
-    var value: Float
+    /** Nullable: Es la capacidad que le damos a una variable de poder almacenar un valor nulo
+     *            para darle esta capacidad a las variables o constantes en Kotlin debemos hacer uso de ? al declarar su tipo (ver linea 11) */
 
-    header()
+    val label: String = "Android say:"
+    var message : String = "$label Hola! te preguntaré, pero no me respondas \n             ¿Cómo te llamas? "     //  Define variable de tipo nulo sin capacidad de albergar un valor nulo
 
-    do{
-        print( "Ingrese nota #${ counter + 1 }: " )
-        value = readLine()!! .toFloat()
+    print( message )
+    var name : String? = readLine()         //  Se declara name como una variable de tipo String Nullable anteponiendole al tipo el signo ?
 
-        if( value > 0 && value <= 5 ) {
-            total += value
-            counter ++
-        }
-        else if( value > 5 ) {
-            println( "  > ERROR: La nota no esta en el rango esperado" )
-        }
-    } while( value >= 0 )
-
-    println( "El promedio de las $counter notas ingresadas es: ${ getAverage( total, counter ) }" )
-}
-
-// Funcion sin parametros
-fun header() {
-    println( "Promedio de N notas, entre 0 a 5. Digite un numero menor de 0 para salir" )
-    repeat( 50 ){
-        print( "=" )
+    if( name!!.isEmpty()) {                 //  !! a diferencia del ? convierte cualquier valor en un tipo no nulo y lanza una excepción NPE (NullPointerException) si el valor es nulo
+        name = null
+        println( "$label Sin nombre el valor ahora será establecido como '${ name }'" )
+    } else {
+        println( "$label Hola ${ name?.uppercase() }! La idea era que no contestaras." )            // Con ? valida si name es null para posteriormente convertir a mayusculas
     }
-    println()
-}
 
-// Funcion con parametros
-fun getAverage( total: Float, counter: Int ) : Float {
-    return ( ( total / counter ) .toFloat() )
+    val size = name?.let { it.length }      // Con ? valida si name no es null, posteriormente condiciona el resultado, si no es null mostrará su longitud
+    if( size != null )
+        println( "Tu nombre tiene ${ size } caracteres." )
 }
