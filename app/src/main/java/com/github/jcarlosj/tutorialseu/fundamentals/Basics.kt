@@ -1,30 +1,46 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    var counter: Int = 0
-    var total: Float = 0.0f
-    var average: Float = 0.0f
-    var value: Float
-
-    println( "Promedio de N notas, entre 0 a 5. Digite un numero menor de 0 para salir" )
-    repeat( 50 ){
-        print( "=" )
+    print( "FORMA 1: \n  for ( number in 1..10 ) \n    " )
+    for ( number in 1..10 ) {
+        print( "$number, " )
     }
     println()
 
-    do{
-        print( "Ingrese nota #${ counter + 1 }: " )
-        value = readLine()!! .toFloat()
+    print( "FORMA 2 (until): \n  for ( i in 1 until 10 ) \n    " )
+    for ( i in 1 until 10 ) {
+        print( "$i, " )
+    }
+    println()
 
-        if( value > 0 && value <= 5 ) {
-            total += value
-            counter ++
-        }
-        else if( value > 5 ) {
-            println( "  > ERROR: La nota no esta en el rango esperado" )
-        }
-    } while( value >= 0 )
+    print( "FORMA 2 (downTo): \n  for ( i in 10 downTo 1 ) \n    " )
+    for ( i in 10 downTo 1 ) {
+        print( "$i, " )
+    }
+    println()
 
-    average = ( ( total / counter ) .toFloat() )
-    println( "El promedio de las $counter notas ingresadas es: $average" )
+    print( "FORMA 3 (until/step): \n  for ( i in 1 until 10 step 2 ) \n    " )
+    for ( i in 1 until 10 step 2 ) {
+        print( "$i, " )
+    }
+    println()
+
+    print( "FORMA 3 (downTo/step): \n  for ( i in 10 downTo 1 step 2 ) \n    " )
+    for ( i in 10 downTo 1 step 2 ) {
+        print( "$i, " )
+    }
+    println()
+
+    print( "FORMA 4 (until/step): \n  for ( i in 1 until( 20 ) step( 2 ) ) \n    " )
+    for ( i in 0 until( 20 ) step( 2 ) ) {
+        print( "$i, " )
+    }
+    println()
+
+    print( "FORMA 5 (downTo/step): \n  for ( i in 10.downTo( 0 ).step( 2 ) ) \n    " )
+    for ( i in 20.downTo( 0 ).step( 2 ) ) {
+        print( "$i, " )
+    }
+    println()
+
 }
