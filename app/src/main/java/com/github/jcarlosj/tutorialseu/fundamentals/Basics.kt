@@ -1,16 +1,26 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    var something: Any = true
-    println( ": $something" )
+    var counter: Int = 4
+    var total: Float = 0.0f
+    var average: Float = 0.0f
+    var value: Float
 
-    // When (Es como switch para otros lenguajes)
-    when( something ) {
-        is Int      -> println( "$something es un 'Int'" )
-        is Double   -> println( "$something es un 'Double'" )
-        is Float    -> println( "$something es un 'Float'" )
-        is String   -> println( "$something es un 'String'" )
-        is Boolean  -> println( "$something es un 'Boolean'" )
-        else        -> println( "Hey! $something no es un tipo conocido" )
+    println( "Promedio de 4 notas, entre 0 a 5" )
+    while( counter != 0 ) {
+        print( "Ingrese nota ${ 5 - counter }: " )
+        value = readLine()!! .toFloat()
+
+        if( value > 0 && value <= 5 ) {
+            total += value
+            counter -= 1
+        }
+        else {
+            println( "  > ERROR: La nota no esta en el rango esperado" )
+        }
+
     }
+
+    average = ( ( total / 4 ) .toFloat() )
+    println( "El promedio de las 4 notas es: $average" )
 }
