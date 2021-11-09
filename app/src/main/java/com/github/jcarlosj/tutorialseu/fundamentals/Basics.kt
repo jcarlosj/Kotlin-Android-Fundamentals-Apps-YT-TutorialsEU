@@ -1,32 +1,44 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
 fun main() {
-    val arepa = Arepa()
     val sofia = Person( "Sofia", "Gutiérrez" )
-    val milo = Pet( "Milo", "Criollo" )
-    val rex = Pet()
-    val marx = Pet( petName = "Marx ")
+
+    sofia.hobby = "leer"
+    sofia.stateHobby()
+
+    val juan = Person( "Juan", "Jiménez" )
+    val manu = Person( "Manuela", "Gómez" )
+
+    manu.stateHobby()
+
+    println( "\nCantidad de '${ Person.getInfo() }' creadas es de: ${ Person.COUNTER }" )
 }
 
 /** OOP - Classes */
-
-// Sin Constructor
-class Arepa {
-    init {
-        println( "Arepa creada!" )
-    }
-}
-
-// Con Constructor Definido (puede ser publico, private, etc)
 class Person constructor( firstName: String, lastName: String ) {
+    /** Dinamic members or Member variables (Properties or Attributes) */
+    var age: Int? = null
+    var hobby: String = "dormir"
+
     init {
         println( "Persona '$firstName, $lastName' creada!" )
+        Person.COUNTER ++
     }
-}
 
-// Con Constructor No Definido y valores por defecto
-class Pet( petName: String = "Rex", petBreed: String = "German shepherd" ) {
-    init {
-        println( "Mascota '$petName, $petBreed' creada!" )
+    /** Static Members */
+    companion object {
+        /** Member Variables (Properties or Attributes) */
+        var COUNTER = 0
+
+        /** Member function (Methods) */
+        fun getInfo () : String {
+            return "Personas"
+        }
     }
+
+    /** Member function (Methods) */
+    fun stateHobby() {
+        println( " > Say: Mi hobbie es ${ hobby }" )
+    }
+
 }
