@@ -8,14 +8,11 @@ fun main() {
     var message : String = "$label Hola! te preguntaré, pero no me respondas \n             ¿Cómo te llamas? \nMe: "     //  Define variable de tipo nulo sin capacidad de albergar un valor nulo
 
     print( message )
-    var name : String? = readLine()         //  Se declara name como una variable de tipo String Nullable anteponiendole al tipo el signo ?
+    var name : String? = readLine()                     //  1. Declara name como String Nullable
+    name = if( name!!.isEmpty() ) null else name        //  2. Assertion operator !! convierte cualquier variable a tipo no nulo y lanza una excepción NPE (NullPointerException) si el valor es nulo
 
-    if( name!!.isEmpty()) {                 //  !! a diferencia del ? convierte cualquier valor en un tipo no nulo y lanza una excepción NPE (NullPointerException) si el valor es nulo
-        name = null                         //  Si el valor de name es vacio, le asignamos null
-
-        /** Elvis Operator ?: */
-        name = name ?: "Invitado"            // Si el valor de name es null va a asignarle una cadena por defecto
-    }
+    /** Elvis Operator ?: */
+    name = name ?: "Invitado"            // Si el valor de name es null va a asignarle una cadena por defecto
 
     println( "$label Hola $name! Bienvenido." )
 
