@@ -7,8 +7,9 @@ fun main() {
     sofia.stateHobby()
 
     val juan = Person( "Juan", "Jiménez", 43 )
-    val manu = Person( "Manuela", "Gómez", 29 )
+    juan.stateHobby()
 
+    val manu = Person( "Manuela", "Gómez", 29 )
     manu.stateHobby()
 
     println( "\nData Class" )
@@ -20,18 +21,20 @@ fun main() {
 }
 
 /** OOP - Data Class */
-data class Person constructor( var firstName: String, var lastName: String, var age: Int? = null ) {
+data class Person constructor( var firstName: String, var lastName: String ) {
     /** Dinamic members or Member variables (Properties or Attributes) */
+    var age: Int? = null
     var hobby: String = "dormir"
 
     init {
-        println( "Persona '$firstName, $lastName $age' creada!" )
+        println( "Persona '$firstName, $lastName $age' creada! (Main Constructor)" )
         Person.COUNTER ++
     }
 
     /** Secondary Constructor */
-    constructor( firstName: String, lastName: String ) : this ( firstName, lastName, 0 ) {
-        println( "Persona '$firstName, $lastName $age' creada!" )
+    constructor( firstName: String, lastName: String, age: Int ) : this ( firstName, lastName ) {
+        this .age = age
+        println( "Persona '$firstName, $lastName, $age' creada!  (Secondary Constructor)" )
     }
 
     /** Static Members */
@@ -47,7 +50,11 @@ data class Person constructor( var firstName: String, var lastName: String, var 
 
     /** Member function (Methods) */
     fun stateHobby() {
-        println( " > Say: Mi hobbie es ${ hobby }" )
+        println( " > ${ this .firstName } say: Mi hobbie es ${ this .hobby }" )
+    }
+
+    override fun toString(): String {
+        return "Person( firstName: ${ this .firstName }, lastName: ${ this .lastName }, age: ${ this .age } )"
     }
 
 }
