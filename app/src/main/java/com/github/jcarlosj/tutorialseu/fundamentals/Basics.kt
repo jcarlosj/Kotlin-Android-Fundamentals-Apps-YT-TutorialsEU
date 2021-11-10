@@ -2,38 +2,33 @@ package com.github.jcarlosj.tutorialseu.fundamentals
 
 import java.lang.IllegalArgumentException
 
+/** OOP - Data Class: No pueden ser open/abstract (inherit/abstract) */
+data class User( val id: Long, var username: String )
+
 fun main() {
-    val taxi = Car()
-    taxi .maxSpeed = 150
-    println( "Propietaria: ${ taxi .owner } \nMarca: ${ taxi .brand } \nMax Speed: ${ taxi .maxSpeed }" )
-    //taxi .model = "M5"                  //  No se puede acceder por que el Custom Setter indica que es private
-    println( "Model: ${ taxi .model }")
-    taxi.makeImprovement()
-    println( "Model: ${ taxi .model }")
-}
+    val elisa = User( 1, "Elisa")
+    val luisa = User( 1, "Luisa" )
 
-/** OOP - Data Class */
-class Car() {
-    lateinit var owner: String      //  lateinit: Permite indicarle que inicializaremos en otro momento
-    var brand: String = "BMW"
-    get() {                         /** Custom Getter to brand */
-        return field.lowercase()
-    }
+    println( " > ${ elisa.toString() }" )   //  Imprime detalle de la data del objeto usando toString()
+    println( " > ${ luisa.toString() }" )   //  Imprime detalle de la data del objeto usando toString()
+    println( "El obj 'elisa' es igual al obj 'luisa': ${ elisa .equals( luisa ) }"  )
 
-    var maxSpeed: Int = 250
-    get() = field                   /** Custom Getter to brand: en este caso seria redundante ya que si no la definimos igual la retorna como se establecio (Podría eliminar esta linea) */
-    set( value ) {                  /** Custom Setter to brand */
-        field = if( value > 0 ) value else throw IllegalArgumentException( "La velocidad máxima no puede ser menor de 0" )
-    }
 
-    var model: String = "M5"
-    private set                     /** Solo esta disponible dentro de la clase */
+    println( "\nCambia el nombre de elisa a 'Luisa'" )
+    elisa.username = "Luisa"
+    println( " > ${ elisa }" )              //  Imprime detalle de la data del objeto sin usar toString()
+    println( " > ${ luisa }" )              //  Imprime detalle de la data del objeto sin usar toString()
+    println( "El obj 'elisa' es igual al obj 'luisa': ${ elisa == luisa } \n"  )
 
-    init {
-        this .owner = "Luisa"       //  Si no se hace la inicializacion al acceder al dato owner (linea 5) se lanzara una Exception
-    }
+    val juliana = elisa .copy( username = "Juliana" )   // Copia el objeto y reasigna valor al atributo username
+    println( " > ${ juliana }" )            //  Imprime detalle de la data del objeto sin usar toString()
+    println( "El obj 'elisa' es igual al obj 'juliana': ${ elisa == juliana }" )
 
-    fun makeImprovement() {
-        this.model += "-Improved"
-    }
+    println( "\nImprime componentes de un objeto (usando component)")
+    println( " > ${ juliana::class.simpleName}( id: ${ juliana.component1() }, username: ${ juliana.component2() } )" )
+
+    /** Deconstruccion (Desestructuracion) */
+    println( "\nDeconstruccion de un objeto")
+    val ( id, username ) = juliana;
+    println( "id: $id, username: $username ")
 }
