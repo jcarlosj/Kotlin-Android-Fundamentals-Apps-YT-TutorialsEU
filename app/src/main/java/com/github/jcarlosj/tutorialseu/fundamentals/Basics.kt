@@ -11,13 +11,17 @@ fun main() {
 
     manu.stateHobby()
 
+    println( "\nData Class" )
+    println( sofia.toString() )
+    println( juan.toString() )
+    println( manu.toString() )
+
     println( "\nCantidad de '${ Person.getInfo() }' creadas es de: ${ Person.COUNTER }" )
 }
 
-/** OOP - Classes */
-class Person constructor( firstName: String, lastName: String, age: Int ) {
+/** OOP - Data Class */
+data class Person constructor( var firstName: String, var lastName: String, var age: Int? = null ) {
     /** Dinamic members or Member variables (Properties or Attributes) */
-    var age: Int? = null
     var hobby: String = "dormir"
 
     init {
@@ -27,7 +31,7 @@ class Person constructor( firstName: String, lastName: String, age: Int ) {
 
     /** Secondary Constructor */
     constructor( firstName: String, lastName: String ) : this ( firstName, lastName, 0 ) {
-        println( "Persona '$firstName, $lastName' creada!" )
+        println( "Persona '$firstName, $lastName $age' creada!" )
     }
 
     /** Static Members */
