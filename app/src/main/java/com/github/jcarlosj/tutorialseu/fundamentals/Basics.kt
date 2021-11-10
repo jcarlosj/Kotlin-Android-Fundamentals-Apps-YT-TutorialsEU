@@ -6,8 +6,8 @@ fun main() {
     sofia.hobby = "leer"
     sofia.stateHobby()
 
-    val juan = Person( "Juan", "Jiménez" )
-    val manu = Person( "Manuela", "Gómez" )
+    val juan = Person( "Juan", "Jiménez", 43 )
+    val manu = Person( "Manuela", "Gómez", 29 )
 
     manu.stateHobby()
 
@@ -15,14 +15,19 @@ fun main() {
 }
 
 /** OOP - Classes */
-class Person constructor( firstName: String, lastName: String ) {
+class Person constructor( firstName: String, lastName: String, age: Int ) {
     /** Dinamic members or Member variables (Properties or Attributes) */
     var age: Int? = null
     var hobby: String = "dormir"
 
     init {
-        println( "Persona '$firstName, $lastName' creada!" )
+        println( "Persona '$firstName, $lastName $age' creada!" )
         Person.COUNTER ++
+    }
+
+    /** Secondary Constructor */
+    constructor( firstName: String, lastName: String ) : this ( firstName, lastName, 0 ) {
+        println( "Persona '$firstName, $lastName' creada!" )
     }
 
     /** Static Members */
