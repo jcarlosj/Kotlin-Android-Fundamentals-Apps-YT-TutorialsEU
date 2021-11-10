@@ -17,7 +17,13 @@ fun main() {
     println( juan.toString() )
     println( manu.toString() )
 
-    println( "\nCantidad de '${ Person.getInfo() }' creadas es de: ${ Person.COUNTER }" )
+    println( "\nCantidad de clases de tipo '${ sofia::class.simpleName!! }' creadas es de: ${ Person.COUNTER } \n" )
+
+    println( "NameClass: ${ sofia::class.simpleName }" )
+    println( "NameClass: ${ sofia::class.java.canonicalName }")
+    println( "NameClass: ${ sofia::class.qualifiedName }")
+    println( "NameClass: ${ sofia::class.java.name }" )
+    println( "getInfo: ${ Person.getInfo() }" );
 }
 
 /** OOP - Data Class */
@@ -44,7 +50,7 @@ data class Person constructor( var firstName: String, var lastName: String ) {
 
         /** Member function (Methods) */
         fun getInfo () : String {
-            return "Personas"
+            return javaClass.simpleName
         }
     }
 
@@ -54,7 +60,7 @@ data class Person constructor( var firstName: String, var lastName: String ) {
     }
 
     override fun toString(): String {
-        return "Person( firstName: ${ this .firstName }, lastName: ${ this .lastName }, age: ${ this .age } )"
+        return "${ javaClass.simpleName }( firstName: ${ this .firstName }, lastName: ${ this .lastName }, age: ${ this .age } )"
     }
 
 }
