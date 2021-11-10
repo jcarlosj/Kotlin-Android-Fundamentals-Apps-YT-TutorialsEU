@@ -1,34 +1,35 @@
 package com.github.jcarlosj.tutorialseu.fundamentals
 
-import java.lang.IllegalArgumentException
-
-/** OOP - Data Class: No pueden ser open/abstract (inherit/abstract) */
-data class User( val id: Long, var username: String )
-
 fun main() {
-    val elisa = User( 1, "Elisa")
-    val luisa = User( 1, "Luisa" )
+    val audiCar = Car( "A3", "Audi" )
+    val teslaCar = ElectricCar( "S-Model", "Tesla", 85.0 )
 
-    println( " > ${ elisa.toString() }" )   //  Imprime detalle de la data del objeto usando toString()
-    println( " > ${ luisa.toString() }" )   //  Imprime detalle de la data del objeto usando toString()
-    println( "El obj 'elisa' es igual al obj 'luisa': ${ elisa .equals( luisa ) }"  )
+    audiCar.drive( 100.0 )
+    audiCar.extendRange( 50.0 )
+    print( ", rango: ${ audiCar .range } km \n" )
 
+    teslaCar.drive( 100.0 )
+    teslaCar.extendRange( 100.0 )
+    print( ", rango: ${ teslaCar .range } km \n" )
+}
 
-    println( "\nCambia el nombre de elisa a 'Luisa'" )
-    elisa.username = "Luisa"
-    println( " > ${ elisa }" )              //  Imprime detalle de la data del objeto sin usar toString()
-    println( " > ${ luisa }" )              //  Imprime detalle de la data del objeto sin usar toString()
-    println( "El obj 'elisa' es igual al obj 'luisa': ${ elisa == luisa } \n"  )
+/** OOP - Herencia de clases: Por defecto las clases en Kotlin son definidas como final, esto evita que puedan ser usadas por otras.
+ *  open: es una propiedad que elimina la definicion predetermindad de final y la hace accesible y extendible */
+open class Car( val name: String, val brand: String ) {
+    var range: Double = 0.0
 
-    val juliana = elisa .copy( username = "Juliana" )   // Copia el objeto y reasigna valor al atributo username
-    println( " > ${ juliana }" )            //  Imprime detalle de la data del objeto sin usar toString()
-    println( "El obj 'elisa' es igual al obj 'juliana': ${ elisa == juliana }" )
+    fun extendRange( amount: Double ) {
+        if( amount > 0 )
+            range += amount
+    }
 
-    println( "\nImprime componentes de un objeto (usando component)")
-    println( " > ${ juliana::class.simpleName}( id: ${ juliana.component1() }, username: ${ juliana.component2() } )" )
+    fun drive( distance: Double ) {
+        print( "${ javaClass.simpleName } condujo por: $distance km" )
+    }
 
-    /** Deconstruccion (Desestructuracion) */
-    println( "\nDeconstruccion de un objeto")
-    val ( id, username ) = juliana;
-    println( "id: $id, username: $username ")
+}
+
+/** Clase Hija que hereda o extiende de la clase padre Vehicle */
+class ElectricCar( name: String, brand : String, batteryLife: Double ) : Car( name, brand ) {
+
 }
